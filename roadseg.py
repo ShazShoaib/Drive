@@ -6,7 +6,7 @@ class roadSeg:
     def __init__(self):
         global ROAD_SPEED
         self.alive = True
-        self.img_path = 'sprites/rd.png'
+        self.img_path = ROAD_IMG_PATH
         self.img = pygame.image.load(self.img_path)
         self.y = 0
         self.x = 0
@@ -38,9 +38,11 @@ class road:
         for seg in self.seg_list:
             seg.update()
 
+        SM = speedMan()
+
         if (self.seg_list[-1].y > 0):
             Rd = roadSeg()
-            Rd.y = -SCREEN_HEIGHT+ROAD_SPEED
+            Rd.y = -SCREEN_HEIGHT + SM.getSpeed()
             self.seg_list.append(Rd)
             del self.seg_list[0]
 

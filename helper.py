@@ -50,7 +50,7 @@ def manage_input(player,obj_list):
     global ROAD_SPEED
     if(not player.alive):
         return
-                                                            # MOVEMENT CONTROLS
+    # MOVEMENT CONTROLS
     if keys['up']:
         player.Vy = player.Vy - 1
     if keys['down']:
@@ -59,7 +59,8 @@ def manage_input(player,obj_list):
         player.Vx = player.Vx - 1
     if keys['right']:
         player.Vx = player.Vx + 1
-                                                            # COMPOUND MOVEMENT CONTROLS, MULTIPLE KEYS PRESSED
+
+    # COMPOUND MOVEMENT CONTROLS, MULTIPLE KEYS PRESSED
     if keys['up']:
         if keys['left']:
             pass
@@ -70,10 +71,11 @@ def manage_input(player,obj_list):
             pass
         if keys['right']:
             pass
-                                                            # ATTACKS AND SPECIAL ACTIONS
+
+    # SPECIAL ACTIONS
     if keys['space']:
         SM = speedMan()
-        SM.mul(60*0.96/FPS)
+        SM.mul(60*BRAKE_FORCE/FPS)
     if keys['f']:
         pass #player.attack(obj_list)
 

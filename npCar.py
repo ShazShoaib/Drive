@@ -1,19 +1,20 @@
 import pygame
 import math
 import helper
+from settings import *
 
 class car:
     def __init__(self):
         self.alive = True
         self.x = 0
         self.y = 0
-        self.img_path = 'sprites/car1.png'
+        self.img_path = CAR_IMG_PATH
         self.img = pygame.image.load(self.img_path)
         self.angle = 0
         self.Vx = 0
         self.Vy = 2
-        self.w = 96
-        self.h = 120
+        self.w = CAR_WIDTH
+        self.h = CAR_HEIGHT
 
     def update(self):
         self.y = self.y + self.Vy

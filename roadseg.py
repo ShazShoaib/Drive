@@ -40,6 +40,7 @@ class road:
             Rd = roadSeg()
             Rd.y = -SCREEN_HEIGHT+ROAD_SPEED
             self.seg_list.append(Rd)
+            del self.seg_list[0]
 
     def render(self,window):
         for seg in self.seg_list:

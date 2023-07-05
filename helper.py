@@ -73,7 +73,7 @@ def manage_input(player,obj_list):
                                                             # ATTACKS AND SPECIAL ACTIONS
     if keys['space']:
         SM = speedMan()
-        SM.add(-5/FPS)
+        SM.mul(60*0.96/FPS)
     if keys['f']:
         pass #player.attack(obj_list)
 

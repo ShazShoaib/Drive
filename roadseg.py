@@ -17,6 +17,8 @@ class roadSeg:
         self.img = pygame.transform.scale(self.img, (self.w, self.h))
 
     def update(self):
+        SM = speedMan()
+        self.Vy = SM.getSpeed()
         self.y = self.y + self.Vy
 
     def render(self,window):

@@ -9,6 +9,9 @@ class speedMan:
         global ROAD_SPEED
         ROAD_SPEED = ROAD_SPEED + value
 
+    def mul(self,value):
+        global ROAD_SPEED
+        ROAD_SPEED = ROAD_SPEED * value
 
     def getSpeed(self):
         global ROAD_SPEED

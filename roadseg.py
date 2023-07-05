@@ -1,14 +1,17 @@
 import pygame
 from settings import *
+from speedManager import *
+
 class roadSeg:
     def __init__(self):
+        global ROAD_SPEED
         self.alive = True
         self.img_path = 'sprites/rd.png'
         self.img = pygame.image.load(self.img_path)
         self.y = 0
         self.x = 0
-        self.Vy = ROAD_SPEED
-        print(ROAD_SPEED)
+        SM = speedMan()
+        self.Vy = SM.getSpeed()
         self.w = SCREEN_WIDTH
         self.h = SCREEN_HEIGHT
         self.img = pygame.transform.scale(self.img, (self.w, self.h))

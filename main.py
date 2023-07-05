@@ -14,6 +14,8 @@ obj_list = []  # Stores all game objects
 P = player()
 E = car()
 Rd = road()
+SM = speedMan()
+
 obj_list.append(Rd)
 obj_list.append(P)
 obj_list.append(E)
@@ -25,6 +27,8 @@ while running:
             running = False
         set_input(event)
     manage_input(P, obj_list)  # Player Input is managed in a helper function
+
+    SM.add(1/FPS)          # gradually increase game speed
 
     for i in range(len(obj_list) - 1, 0, -1):  # remove all items which are marked as destroyed
         if not obj_list[i].alive:

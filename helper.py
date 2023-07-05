@@ -1,6 +1,7 @@
 import pygame
 import math
 from settings import *
+from speedManager import *
 
 def to_radian(angle):                                       # converts degree to radian units
     return math.pi*angle/180
@@ -71,8 +72,8 @@ def manage_input(player,obj_list):
             pass
                                                             # ATTACKS AND SPECIAL ACTIONS
     if keys['space']:
-        ROAD_SPEED = ROAD_SPEED + 2
-        print(ROAD_SPEED)
+        SM = speedMan()
+        SM.add(-5/FPS)
     if keys['f']:
         pass #player.attack(obj_list)
 

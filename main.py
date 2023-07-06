@@ -3,7 +3,7 @@ from settings import *
 from roadseg import *
 from player import *
 from helper import *
-from npCar import *
+from VehicleManager import *
 
 pygame.init()
 window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -12,7 +12,7 @@ clock = pygame.time.Clock()
 
 obj_list = []  # Stores all game objects
 P = player()
-E = car()
+E = carManager()
 Rd = road()
 SM = speedMan()
 

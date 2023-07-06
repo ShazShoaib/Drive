@@ -1,3 +1,4 @@
+import random
 import pygame
 import math
 import helper
@@ -12,9 +13,9 @@ class car:
         self.img = pygame.image.load(self.img_path)
         self.angle = 0
         self.Vx = 0
-        self.Vy = 2
-        self.w = CAR_WIDTH
-        self.h = CAR_HEIGHT
+        self.Vy = NP_CAR_SPEED * random.randint(5,10)/5
+        self.w = CAR1_WIDTH
+        self.h = CAR1_HEIGHT
 
     def update(self):
         self.y = self.y + self.Vy
@@ -28,3 +29,5 @@ class car:
 
     def render(self,window):
         window.blit(self.img, (self.x, self.y))
+
+

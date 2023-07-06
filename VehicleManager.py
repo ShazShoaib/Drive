@@ -60,12 +60,15 @@ class carManager:
     def collision_check(self,player):
 
         for car in self.car_list:
-            if helper.collide_check(player,car):
+            F, B, L, R = helper.check_collision2(player,car,x_buffer=12)
+
+            if F:
                 print("DIED")
                 exit(0)
-        #    F,B,L,R = helper.collide_check(player,car)
-        #    print(F,B,L,R)
-        #    if F:
-        #        player.y = car.y+car.h
-        #    if B:
-        #        player.y = car.y - player.h
+            if B:
+                player.Vy = -player.Vy + car.Vy
+            if L:
+                player.Vx = -player.Vx + car.Vx
+            if R:
+                player.Vx = -player.Vx + car.Vx
+

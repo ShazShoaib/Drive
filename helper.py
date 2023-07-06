@@ -114,20 +114,36 @@ def collide_check(object1,object2):                         # checks whether two
             return True
     return False
 
-def collide_check_exp(player,car):                         # checks whether two objects are colliding with each other
+def check_collision2(obj1, obj2, x_buffer=0, y_buffer=0):
+    # Calculate the center points of the objects
+    obj1_center_x = obj1.x + obj1.w / 2
+    obj1_center_y = obj1.y + obj1.h / 2
+    obj2_center_x = obj2.x + obj2.w / 2
+    obj2_center_y = obj2.y + obj2.h / 2
 
-    front_collide = False
-    back_collide = False
-    right_collide = False
-    left_collide = False
-    if abs(player.y - (car.y + car.h)) > 5:
-        front_collide = True
-    if abs((player.y + player.h) - car.y) > 5:
-        back_collide = True
-    if abs(player.x - (car.x + car.w)) > 5:
-        left_collide = True
-    if abs(player.x + (player.w - car.x)) > 5:
-        right_collide = True
+    # Calculate the distance between the center points
+    dx = obj2_center_x - obj1_center_x
+    dy = obj2_center_y - obj1_center_y
+    overlap_x = (obj1.w + obj2.w) / 2 - abs(dx)
+    overlap_y = (obj1.h + obj2.h) / 2 - abs(dy)
 
-    return front_collide,back_collide,left_collide,right_collide
+    collide_above = False
+    collide_below = False
+    collide_left = False
+    collide_right = False
+
+    if overlap_x > x_buffer and overlap_y > y_buffer:
+        # Objects are colliding
+        if overlap_x < overlap_y:
+            if dx < 0:
+                collide_left = True
+            else:
+                collide_right = True
+        else:
+            if dy < 0:
+                collide_above = True
+            else:
+                collide_below = True
+
+    return collide_above,collide_below,collide_left,collide_right
 

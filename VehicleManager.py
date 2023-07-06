@@ -9,9 +9,6 @@ class carManager:
         self.car_list = []
         self.timer = 0
         self.car_rows = [False, False, False, False]
-        C = car()
-        self.car_list.append(C)
-        C.x = SCREEN_WIDTH*5/123 + (SCREEN_WIDTH*28/123 - CAR1_WIDTH)/2
         self.pos_list = [
             SCREEN_WIDTH * 5 / 123 + (SCREEN_WIDTH * 28 / 123 - CAR1_WIDTH) / 2 + 0 * SCREEN_WIDTH * 28 / 123,
             SCREEN_WIDTH * 5 / 123 + (SCREEN_WIDTH * 28 / 123 - CAR1_WIDTH) / 2 + 1 * SCREEN_WIDTH * 28 / 123,

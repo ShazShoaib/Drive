@@ -5,11 +5,12 @@ import helper
 from settings import *
 
 class car:
+    car_paths = [CAR_IMG_PATH_G,CAR_IMG_PATH_B, CAR_IMG_PATH_R, CAR_IMG_PATH_Y, CAR_IMG_PATH_W]
     def __init__(self):
         self.alive = True
         self.x = 0
         self.y = 0
-        self.img_path = CAR_IMG_PATH
+        self.img_path = self.car_paths[random.randint(0,len(self.car_paths)-1)]
         self.img = pygame.image.load(self.img_path)
         self.angle = 0
         self.Vx = 0

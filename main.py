@@ -34,6 +34,7 @@ while running:
         if not obj_list[i].alive:
             del obj_list[i]
 
+    E.collision_check(P)
     for game_obj in obj_list:  # Update all game objects
         game_obj.update()
 

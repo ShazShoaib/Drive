@@ -7,7 +7,7 @@ class player:
     def __init__(self):
         self.alive = True
         self.x = SCREEN_WIDTH * 5 / 123 + (SCREEN_WIDTH * 28 / 123 - CAR1_WIDTH) / 2 + 2 * SCREEN_WIDTH * 28 / 123
-        self.y = -CAR2_HEIGHT
+        self.y = SCREEN_HEIGHT-CAR2_HEIGHT
         self.img_path = PLAYER_IMG_PATH
         self.img = pygame.image.load(self.img_path)
         self.angle = 0

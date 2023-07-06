@@ -1,3 +1,4 @@
+import helper
 import npCar
 from settings import *
 from npCar import *
@@ -55,3 +56,16 @@ class carManager:
     def render(self,window):
         for car in self.car_list:
             car.render(window)
+
+    def collision_check(self,player):
+
+        for car in self.car_list:
+            if helper.collide_check(player,car):
+                print("DIED")
+                exit(0)
+        #    F,B,L,R = helper.collide_check(player,car)
+        #    print(F,B,L,R)
+        #    if F:
+        #        player.y = car.y+car.h
+        #    if B:
+        #        player.y = car.y - player.h

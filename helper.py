@@ -104,3 +104,30 @@ def bound_screen_space(game_object):
     elif (game_object.y <= 0):
         game_object.y = 0
         game_object.Vy = -game_object.Vy
+
+
+
+def collide_check(object1,object2):                         # checks whether two objects are colliding with each other
+
+    if (abs(object1.x + object1.w * 0.5 - object2.x - object2.w * 0.5)) < 0.5*(object1.w + object2.w) and \
+       (abs(object1.y + object1.h * 0.5 - object2.y - object2.h * 0.5)) < 0.5 * (object1.h + object2.h):
+            return True
+    return False
+
+def collide_check_exp(player,car):                         # checks whether two objects are colliding with each other
+
+    front_collide = False
+    back_collide = False
+    right_collide = False
+    left_collide = False
+    if abs(player.y - (car.y + car.h)) > 5:
+        front_collide = True
+    if abs((player.y + player.h) - car.y) > 5:
+        back_collide = True
+    if abs(player.x - (car.x + car.w)) > 5:
+        left_collide = True
+    if abs(player.x + (player.w - car.x)) > 5:
+        right_collide = True
+
+    return front_collide,back_collide,left_collide,right_collide
+

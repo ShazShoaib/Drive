@@ -7,11 +7,13 @@ class speedMan:
 
     def add(self,value):
         global ROAD_SPEED
-        ROAD_SPEED = ROAD_SPEED + value
+        if ROAD_SPEED*SPEEDOMETER_ACCELERATION + value < MAX_SPEED:
+            ROAD_SPEED = ROAD_SPEED + value
 
     def mul(self,value):
         global ROAD_SPEED
-        ROAD_SPEED = ROAD_SPEED * value
+        if ROAD_SPEED*SPEEDOMETER_ACCELERATION * value < MAX_SPEED:
+            ROAD_SPEED = ROAD_SPEED * value
 
     def getSpeed(self):
         global ROAD_SPEED

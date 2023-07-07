@@ -27,8 +27,8 @@ class speedometer():
         self.w * scaler, self.h * scaler))                                                              # Scale the image according to its width and height
 
     def update(self):
-        speedtxt = helper.SetNoDigits(int(self.SM.getSpeed())*SPEEDOMETER_COLOR_CHANGE,3)
-        speedcolor = helper.limitTo(speedtxt, 255)
+        speedtxt = helper.SetNoDigits(int(self.SM.getSpeed()*SPEEDOMETER_ACCELERATION),3)
+        speedcolor = helper.limitTo(self.SM.getSpeed()*SPEEDOMETER_COLOR_CHANGE, 255)
         self.txtobj.text = str(speedtxt)
         self.txtobj.color[0] = (speedcolor, 255 - speedcolor, 255 - speedcolor)
         self.txtobj.x = self.x + self.w/2 -self.txtobj.rect.w -3

@@ -2,12 +2,14 @@ import helper
 import npCar
 from settings import *
 from npCar import *
+from speedManager import *
 
 class carManager:
     def __init__(self):
         self.alive = True
         self.car_list = []
         self.timer = 0
+        self.SM = speedMan()
         self.car_rows = [False, False, False, False]
         self.pos_list = [
             SCREEN_WIDTH * 5 / 123 + (SCREEN_WIDTH * 28 / 123 - CAR1_WIDTH) / 2 + 0 * SCREEN_WIDTH * 28 / 123,
@@ -42,7 +44,7 @@ class carManager:
                     self.car_rows[pos] = True
                     if pos == 1 or pos == 0:
                         C.angle = C.angle + 180
-                        C.Vy = 4*C.Vy
+                        C.Vy = 2*C.Vy + self.SM.getSpeed()/2
                     break
                 else:
                     pos = pos - 1

@@ -22,7 +22,7 @@ class carManager:
 
         # delete objects
         for i in reversed(range(len(self.car_list))):
-            if self.car_list[i].y > SCREEN_HEIGHT:
+            if self.car_list[i].y > SCREEN_HEIGHT or self.car_list[i].y < -CAR2_HEIGHT:
                 car_pos = self.car_list[i].x
                 del self.car_list[i]
 
@@ -41,6 +41,7 @@ class carManager:
                     self.car_list.append(C)
                     C.x = self.pos_list[pos]
                     C.y = -CAR1_HEIGHT
+                    C.row = pos
                     self.car_rows[pos] = True
                     if pos == 1 or pos == 0:
                         C.angle = C.angle + 180
@@ -51,6 +52,11 @@ class carManager:
 
         for car in self.car_list:
             car.update()
+
+    def player_brake(self):
+        for car in self.car_list:
+            if car.row == 2 or car.row == 3:
+                car.Vy = car.Vy-BRAKE_FORCE/6
 
     def render(self,window):
         for car in self.car_list:

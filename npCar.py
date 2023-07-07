@@ -17,6 +17,7 @@ class car:
         self.Vy = NP_CAR_SPEED * random.randint(5,10)/5
         self.w = CAR1_WIDTH
         self.h = CAR1_HEIGHT
+        self.row = -1
 
     def update(self):
         self.y = self.y + self.Vy

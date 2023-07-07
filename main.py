@@ -4,6 +4,7 @@ from roadseg import *
 from player import *
 from helper import *
 from VehicleManager import *
+from Speedometer import *
 
 pygame.init()
 window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -15,10 +16,12 @@ P = player()
 E = carManager()
 Rd = road()
 SM = speedMan()
+SP = speedometer(str(SM.getSpeed()))
 
 obj_list.append(Rd)
 obj_list.append(P)
 obj_list.append(E)
+obj_list.append(SP)
 
 running = True  # manages when the game runs/ends
 while running:

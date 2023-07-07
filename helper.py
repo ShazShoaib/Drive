@@ -147,3 +147,12 @@ def check_collision2(obj1, obj2, x_buffer=0, y_buffer=0):
 
     return collide_above,collide_below,collide_left,collide_right
 
+def limitTo(value,limit):
+    if int(value) > int(limit):
+        value = limit
+    return int(value)
+
+def SetNoDigits(Value,NoDigits):
+    while (len(str(Value))) < NoDigits:
+        Value = "0"+str(Value)
+    return Value

@@ -23,5 +23,6 @@ CAR_IMG_PATH_B = 'sprites/car1b.png'
 CAR_IMG_PATH_Y = 'sprites/car1y.png'
 CAR_IMG_PATH_W = 'sprites/car1w.png'
 SPEEDOMETER_IMG_PATH = 'sprites/speedometer.png'
+NOS_IMG_PATHS = ['sprites/NOS/nos1.png','sprites/NOS/nos2.png','sprites/NOS/nos3.png']
 
 ROAD_IMG_PATH = 'sprites/rd.png'

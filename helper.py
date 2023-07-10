@@ -46,7 +46,7 @@ def set_input(event):                                       # Set the keys as pr
         elif event.key == pygame.K_LSHIFT:
             keys['Lshift'] = False
 
-def manage_input(player,obj_list,VehicleManager,NosManager):
+def manage_input(player,obj_list,VehicleManager,NosManager,Effects):
     global ROAD_SPEED
     if(not player.alive):
         return
@@ -78,11 +78,14 @@ def manage_input(player,obj_list,VehicleManager,NosManager):
         SM.mul(60*BRAKE_FORCE/FPS)
         VehicleManager.player_brake()
     if keys['Lshift']:
+        Effects.status_on = True
         NosManager.isNos = True
         if SM.getSpeed() <= 249:
             VehicleManager.player_nitrous()
+        player.y = player.y - 10/60
     else:
         NosManager.isNos = False
+        Effects.status_on = False
 
 def bound_check(game_object,X_UB=SCREEN_WIDTH,Y_UB=SCREEN_HEIGHT,X_LB=0,Y_LB=0):
     if (game_object.x + game_object.w >= X_UB):

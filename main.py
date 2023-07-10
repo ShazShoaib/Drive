@@ -8,6 +8,7 @@ from helper import *
 from VehicleManager import *
 from Speedometer import *
 from NosManager import *
+from Effects import *
 pygame.init()
 window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Car Game")
@@ -19,14 +20,15 @@ VM = carManager()
 Rd = road()
 SM = speedMan()
 SP = speedometer(str(SM.getSpeed()))
-NS = NosManager.Nos()
-
+NS = Nos()
+EFF = effect(P)
 
 obj_list.append(Rd)
 obj_list.append(P)
 obj_list.append(VM)
 obj_list.append(SP)
 obj_list.append(NS)
+obj_list.append(EFF)
 
 running = True  # manages when the game runs/ends
 while running:
@@ -34,9 +36,11 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         set_input(event)
-    manage_input(P, obj_list,VM,NS)  # Player Input is managed in a helper function
+    manage_input(P, obj_list,VM,NS,EFF)  # Player Input is managed in a helper function
 
     SM.add(1/FPS)          # gradually increase game speed
+    EFF.tick(1)
+
 
     for i in range(len(obj_list) - 1, 0, -1):  # remove all items which are marked as destroyed
         if not obj_list[i].alive:

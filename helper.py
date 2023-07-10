@@ -13,7 +13,7 @@ keys = {                                    # The list of keys for input
     "right": False,                         # RIGHT arrow key
     "enter": False,                         # ENTER key
     "space": False,                         # SPACEBAR key
-    "f": False                              # F key
+    "Lshift": False                         # Left Shift key
 }
 
 def set_input(event):                                       # Set the keys as pressed or no pressed
@@ -28,8 +28,8 @@ def set_input(event):                                       # Set the keys as pr
             keys['right'] = True
         elif event.key == pygame.K_SPACE:
             keys['space'] = True
-        elif event.key == pygame.K_f:
-            keys['f'] = True
+        elif event.key == pygame.K_LSHIFT:
+            keys['Lshift'] = True
 
 
     if event.type == pygame.KEYUP:
@@ -43,10 +43,10 @@ def set_input(event):                                       # Set the keys as pr
             keys['right'] = False
         elif event.key == pygame.K_SPACE:
             keys['space'] = False
-        elif event.key == pygame.K_f:
-            keys['f'] = False
+        elif event.key == pygame.K_LSHIFT:
+            keys['Lshift'] = False
 
-def manage_input(player,obj_list):
+def manage_input(player,obj_list,VehicleManager,NosManager):
     global ROAD_SPEED
     if(not player.alive):
         return
@@ -72,12 +72,17 @@ def manage_input(player,obj_list):
         if keys['right']:
             pass
 
+    SM = speedMan()
     # SPECIAL ACTIONS
     if keys['space']:
-        SM = speedMan()
         SM.mul(60*BRAKE_FORCE/FPS)
-    if keys['f']:
-        pass #player.attack(obj_list)
+        VehicleManager.player_brake()
+    if keys['Lshift']:
+        NosManager.isNos = True
+        if SM.getSpeed() <= 249:
+            VehicleManager.player_nitrous()
+    else:
+        NosManager.isNos = False
 
 def bound_check(game_object,X_UB=SCREEN_WIDTH,Y_UB=SCREEN_HEIGHT,X_LB=0,Y_LB=0):
     if (game_object.x + game_object.w >= X_UB):

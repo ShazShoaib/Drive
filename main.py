@@ -1,11 +1,13 @@
 import pygame
+
+import NosManager
 from settings import *
 from roadseg import *
 from player import *
 from helper import *
 from VehicleManager import *
 from Speedometer import *
-
+from NosManager import *
 pygame.init()
 window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Car Game")
@@ -13,15 +15,18 @@ clock = pygame.time.Clock()
 
 obj_list = []  # Stores all game objects
 P = player()
-E = carManager()
+VM = carManager()
 Rd = road()
 SM = speedMan()
 SP = speedometer(str(SM.getSpeed()))
+NS = NosManager.Nos()
+
 
 obj_list.append(Rd)
 obj_list.append(P)
-obj_list.append(E)
+obj_list.append(VM)
 obj_list.append(SP)
+obj_list.append(NS)
 
 running = True  # manages when the game runs/ends
 while running:
@@ -29,7 +34,7 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         set_input(event)
-    manage_input(P, obj_list)  # Player Input is managed in a helper function
+    manage_input(P, obj_list,VM,NS)  # Player Input is managed in a helper function
 
     SM.add(1/FPS)          # gradually increase game speed
 
@@ -37,7 +42,7 @@ while running:
         if not obj_list[i].alive:
             del obj_list[i]
 
-    E.collision_check(P)
+    VM.collision_check(P)
     for game_obj in obj_list:  # Update all game objects
         game_obj.update()
 

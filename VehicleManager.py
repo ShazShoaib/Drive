@@ -58,6 +58,13 @@ class carManager:
             if car.row == 2 or car.row == 3:
                 car.Vy = car.Vy-BRAKE_FORCE/6
 
+    def player_nitrous(self):
+        for car in self.car_list:
+            if car.row == 2 or car.row == 3:
+                car.Vy = car.Vy+BRAKE_FORCE/6
+            else:
+                car.Vy = car.Vy+BRAKE_FORCE/6
+
     def render(self,window):
         for car in self.car_list:
             car.render(window)

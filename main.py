@@ -9,6 +9,8 @@ from VehicleManager import *
 from Speedometer import *
 from NosManager import *
 from Effects import *
+from ScoreManager import *
+
 pygame.init()
 window = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Car Game")
@@ -22,6 +24,7 @@ SM = speedMan()
 SP = speedometer(str(SM.getSpeed()))
 NS = Nos()
 EFF = effect(P)
+SCO = score("0")
 
 obj_list.append(Rd)
 obj_list.append(P)
@@ -29,7 +32,7 @@ obj_list.append(VM)
 obj_list.append(SP)
 obj_list.append(NS)
 obj_list.append(EFF)
-
+obj_list.append(SCO)
 running = True  # manages when the game runs/ends
 while running:
     for event in pygame.event.get():
